@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fascicules Express — Boutique</title>
 <style>
-:root{--bg:#f7f8fc;--card:#fff;--text:#172033;--muted:#667085;--accent:#155eef;--accent2:#0b4cc1}
+:root{--bg:#f7f8fc;--card:#fff;--text:#172033;--muted:#667085;--accent:#155eef;--accent2:#0b4cc1;--wave:#1DC0EB}
 *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
 header{background:#fff;border-bottom:1px solid #e8eaf0;position:sticky;top:0;z-index:5}
 .nav{max-width:1100px;margin:auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
@@ -14,18 +14,24 @@ nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-size:14px}
 .hero{max-width:1100px;margin:0 auto;padding:70px 22px 45px;display:grid;grid-template-columns:1.3fr .7fr;gap:35px;align-items:center}
 .badge{display:inline-block;background:#e8f0ff;color:var(--accent);padding:7px 11px;border-radius:999px;font-size:13px;font-weight:700}
 h1{font-size:clamp(38px,6vw,64px);line-height:1.02;margin:18px 0}.hero p{font-size:18px;color:var(--muted);max-width:600px;line-height:1.6}
-.btn{display:inline-block;border:0;background:var(--accent);color:white;padding:13px 18px;border-radius:10px;font-weight:700;text-decoration:none;cursor:pointer}.btn:hover{background:var(--accent2)}
+.btn{display:inline-block;border:0;background:var(--accent);color:white;padding:13px 18px;border-radius:10px;font-weight:700;text-decoration:none;cursor:pointer;font-size:15px}.btn:hover{background:var(--accent2)}
+.btn.wave{background:var(--wave);width:100%;margin-top:14px}.btn.wave:hover{background:#17a8cf}
 .preview{background:#fff;border:1px solid #e6e8ee;border-radius:20px;padding:25px;box-shadow:0 15px 45px #1c2a4a12}
 .paper{height:330px;border-radius:10px;background:linear-gradient(145deg,#fff,#eef3fb);border:1px solid #dfe4ee;padding:30px;display:flex;flex-direction:column;justify-content:center}
 .paper h2{font-size:25px;margin:0 0 12px}.paper p{color:var(--muted)}
 .section{max-width:1100px;margin:auto;padding:35px 22px 75px} .section h2{font-size:32px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:22px}.icon{font-size:35px}
-.card h3{margin:14px 0 7px}.muted{color:var(--muted);line-height:1.5}.price{font-size:25px;font-weight:800;margin:18px 0}
+.card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:22px;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px #1c2a4a14}
+.icon{font-size:35px}
+.card h3{margin:14px 0 7px;font-size:18px}.muted{color:var(--muted);line-height:1.5;font-size:14px;flex-grow:1}.price{font-size:25px;font-weight:800;margin:16px 0 0}
 footer{background:#101828;color:#cbd5e1;text-align:center;padding:30px 20px;font-size:14px}
 .modal{display:none;position:fixed;inset:0;background:#10182899;align-items:center;justify-content:center;padding:20px;z-index:10}
 .modal.open{display:flex}.modalbox{background:white;border-radius:18px;max-width:480px;width:100%;padding:25px}.close{float:right;border:0;background:none;font-size:24px;cursor:pointer}
-.note{background:#fff7ed;border:1px solid #fed7aa;padding:13px;border-radius:10px;color:#9a3412;font-size:14px}
+.note{background:#fff7ed;border:1px solid #fed7aa;padding:13px;border-radius:10px;color:#9a3412;font-size:14px;margin-top:14px}
+.wavebox{background:#eafbff;border:1px solid #b9edf9;padding:16px;border-radius:12px;margin-top:14px}
+.wavebox .num{font-size:22px;font-weight:800;color:#0b4cc1;letter-spacing:1px}
+.steps{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:14px;line-height:1.7}
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:45px}nav a{margin-left:9px}.hero p{font-size:16px}}
 </style>
 </head>
@@ -45,21 +51,71 @@ footer{background:#101828;color:#cbd5e1;text-align:center;padding:30px 20px;font
 </div>
 <div class="preview"><div class="paper">
 <div style="font-size:13px;font-weight:700;color:#155eef">FASCICULE</div>
-<h2>Concours douane<br>niveau BFEM</h2>
-<p>Un support numérique de préparation au concours.</p>
+<h2>7 concours disponibles</h2>
+<p>Douane, ENA, Police, Gendarmerie, Eaux et Forêts — prépare-toi avec le bon support.</p>
 </div></div>
 </section>
 
 <section class="section" id="catalogue">
 <h2>Nos fascicules</h2>
 <div class="grid">
+
 <article class="card">
 <div class="icon">📘</div>
-<h3>Concours douane niveau BFEM</h3>
-<p class="muted">Fascicule PDF de préparation au concours.</p>
-<div class="price">Prix à définir</div>
-<button class="btn" onclick="openModal()">Acheter le PDF</button>
+<h3>ENA Cycle B</h3>
+<p class="muted">Fascicule PDF de préparation au concours d'entrée à l'ENA, cycle B.</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('ENA Cycle B')">Acheter le PDF</button>
 </article>
+
+<article class="card">
+<div class="icon">📘</div>
+<h3>Douane niveau BFEM</h3>
+<p class="muted">Fascicule PDF de préparation au concours des Douanes, niveau BFEM (agents de constatation).</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('Douane niveau BFEM')">Acheter le PDF</button>
+</article>
+
+<article class="card">
+<div class="icon">📘</div>
+<h3>Douane niveau CFEE</h3>
+<p class="muted">Fascicule PDF de préparation au concours des Douanes, niveau CFEE (préposés).</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('Douane niveau CFEE')">Acheter le PDF</button>
+</article>
+
+<article class="card">
+<div class="icon">📘</div>
+<h3>Douane niveau BAC</h3>
+<p class="muted">Fascicule PDF de préparation au concours des Douanes, niveau Bac (contrôleurs).</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('Douane niveau BAC')">Acheter le PDF</button>
+</article>
+
+<article class="card">
+<div class="icon">📘</div>
+<h3>Police niveau BAC</h3>
+<p class="muted">Fascicule PDF de préparation au concours de la Police nationale, niveau Bac.</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('Police niveau BAC')">Acheter le PDF</button>
+</article>
+
+<article class="card">
+<div class="icon">📘</div>
+<h3>Gendarmerie niveau BAC</h3>
+<p class="muted">Fascicule PDF de préparation au concours de la Gendarmerie, niveau Bac.</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('Gendarmerie niveau BAC')">Acheter le PDF</button>
+</article>
+
+<article class="card">
+<div class="icon">📘</div>
+<h3>Eaux et Forêts</h3>
+<p class="muted">Fascicule PDF de préparation au concours des Eaux et Forêts.</p>
+<div class="price">1 000 FCFA</div>
+<button class="btn wave" onclick="openModal('Eaux et Forêts')">Acheter le PDF</button>
+</article>
+
 </div>
 </section>
 
@@ -67,8 +123,8 @@ footer{background:#101828;color:#cbd5e1;text-align:center;padding:30px 20px;font
 <h2>Comment ça marche ?</h2>
 <div class="grid">
 <div class="card"><div class="icon">1️⃣</div><h3>Choisis</h3><p class="muted">Sélectionne le fascicule qui t'intéresse.</p></div>
-<div class="card"><div class="icon">2️⃣</div><h3>Paie</h3><p class="muted">Effectue ton paiement avec le moyen disponible sur la boutique.</p></div>
-<div class="card"><div class="icon">3️⃣</div><h3>Télécharge</h3><p class="muted">Après confirmation, ton PDF est rendu disponible.</p></div>
+<div class="card"><div class="icon">2️⃣</div><h3>Paie avec Wave</h3><p class="muted">Envoie le montant via Wave au numéro affiché.</p></div>
+<div class="card"><div class="icon">3️⃣</div><h3>Télécharge</h3><p class="muted">Envoie ta preuve de paiement par WhatsApp et reçois ton PDF.</p></div>
 </div>
 </section>
 </main>
@@ -78,14 +134,27 @@ footer{background:#101828;color:#cbd5e1;text-align:center;padding:30px 20px;font
 <div class="modal" id="modal">
 <div class="modalbox">
 <button class="close" onclick="closeModal()">×</button>
-<h2>Achat du fascicule</h2>
-<p class="muted">Cette maquette est prête pour recevoir ton système de paiement.</p>
-<div class="note">Le paiement réel et la délivrance automatique du PDF doivent être configurés avant la mise en ligne.</div>
-<br><button class="btn" onclick="closeModal()">Fermer</button>
+<h2 id="modalTitle">Achat du fascicule</h2>
+<p class="muted">Prix : <strong>1 000 FCFA</strong></p>
+<div class="wavebox">
+<div style="font-size:13px;color:#0b4cc1;font-weight:700">PAIEMENT WAVE</div>
+<div class="num">70 609 07 43</div>
+</div>
+<ol class="steps">
+<li>Ouvre ton application Wave</li>
+<li>Envoie <strong>1 000 FCFA</strong> au numéro ci-dessus</li>
+<li>Envoie ta capture de paiement par WhatsApp au même numéro</li>
+<li>Tu recevras ton PDF juste après confirmation</li>
+</ol>
+<div class="note">Le paiement est manuel pour le moment — l'envoi du PDF se fait après vérification de ton paiement.</div>
+<br><button class="btn" onclick="closeModal()" style="width:100%">Fermer</button>
 </div>
 </div>
 <script>
-function openModal(){document.getElementById('modal').classList.add('open')}
+function openModal(name){
+  document.getElementById('modalTitle').textContent = 'Achat : ' + name;
+  document.getElementById('modal').classList.add('open');
+}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 </script>
 </body>
