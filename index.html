@@ -106,13 +106,13 @@ footer{background:#101828;color:#cbd5e1;text-align:center;padding:30px 20px;font
 
 <script>
 const fascicules = [
-  {ribbon:"Concours Direct d'Entrée à l'", inst:"ENA", exam:"ENA CYCLE B", level:"NIVEAU BAC", desc:"Fascicule PDF de préparation au concours d'entrée à l'ENA, cycle B.", price:"1 000"},
-  {ribbon:"Concours Direct d'Entrée aux", inst:"DOUANES", exam:"DOUANE", level:"NIVEAU BFEM", desc:"Fascicule PDF de préparation au concours des Douanes, niveau BFEM (agents de constatation).", price:"1 000"},
-  {ribbon:"Concours Direct d'Entrée aux", inst:"DOUANES", exam:"DOUANE", level:"NIVEAU CFEE", desc:"Fascicule PDF de préparation au concours des Douanes, niveau CFEE (préposés).", price:"1 000"},
-  {ribbon:"Concours Direct d'Entrée aux", inst:"DOUANES", exam:"DOUANE", level:"NIVEAU BAC", desc:"Fascicule PDF de préparation au concours des Douanes, niveau Bac (contrôleurs).", price:"1 000"},
-  {ribbon:"Concours Direct d'Entrée à la", inst:"POLICE NATIONALE", exam:"POLICE", level:"NIVEAU BAC", desc:"Fascicule PDF de préparation au concours de la Police nationale, niveau Bac.", price:"1 000"},
-  {ribbon:"Concours Direct d'Entrée à la", inst:"GENDARMERIE", exam:"GENDARMERIE", level:"NIVEAU BAC", desc:"Fascicule PDF de préparation au concours de la Gendarmerie, niveau Bac.", price:"1 000"},
-  {ribbon:"Concours Direct d'Entrée aux", inst:"EAUX ET FORÊTS", exam:"EAUX ET FORÊTS", level:"", desc:"Fascicule PDF de préparation au concours des Eaux et Forêts.", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée à l'", inst:"ENA", exam:"ENA CYCLE B", level:"NIVEAU BAC", matieres:["TEST PSYCHOTECHNIQUE","DISSERTATION CULTURE GÉNÉRALE","RÉSUMÉ DE TEXTE"], desc:"Fascicule PDF de préparation au concours d'entrée à l'ENA, cycle B.", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée aux", inst:"DOUANES", exam:"DOUANE", level:"NIVEAU BFEM", matieres:["FRANÇAIS","MATHÉMATIQUES","GÉOGRAPHIE","DICTÉE"], desc:"Fascicule PDF de préparation au concours des Douanes, niveau BFEM (agents de constatation).", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée aux", inst:"DOUANES", exam:"DOUANE", level:"NIVEAU CFEE", matieres:["FRANÇAIS","MATHÉMATIQUES","GÉOGRAPHIE","DICTÉE"], desc:"Fascicule PDF de préparation au concours des Douanes, niveau CFEE (préposés).", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée aux", inst:"DOUANES", exam:"DOUANE", level:"NIVEAU BAC", matieres:["DROIT PUBLIC","DISSERTATION CULTURE GÉNÉRALE","MATHÉMATIQUES","GÉOGRAPHIE"], desc:"Fascicule PDF de préparation au concours des Douanes, niveau Bac (contrôleurs).", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée à la", inst:"POLICE NATIONALE", exam:"POLICE", level:"NIVEAU BAC", matieres:["DROIT PUBLIC","FRANÇAIS","HISTOIRE-GÉO"], desc:"Fascicule PDF de préparation au concours de la Police nationale, niveau Bac.", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée à la", inst:"GENDARMERIE", exam:"GENDARMERIE", level:"NIVEAU BAC", matieres:["MATHÉMATIQUES","ANGLAIS","DISSERTATION FRANÇAISE"], desc:"Fascicule PDF de préparation au concours de la Gendarmerie, niveau Bac.", price:"1 000"},
+  {ribbon:"Concours Direct d'Entrée aux", inst:"EAUX ET FORÊTS", exam:"EAUX ET FORÊTS", level:"", matieres:["FRANÇAIS","MATHÉMATIQUES","SVT"], desc:"Fascicule PDF de préparation au concours des Eaux et Forêts.", price:"1 000"},
 ];
 
 const grid = document.getElementById('catalogGrid');
@@ -126,9 +126,7 @@ grid.innerHTML = fascicules.map(f => `
       <div class="divider"></div>
       <div class="subtitle">SUJETS CORRIGÉS</div>
       <div class="feats">
-        <div class="feat"><span class="dot"></span>CULTURE GÉNÉRALE</div>
-        <div class="feat"><span class="dot"></span>RÉSUMÉ DE TEXTE</div>
-        <div class="feat"><span class="dot"></span>DISPONIBLE EN PDF</div>
+        ${f.matieres.map(m => `<div class="feat"><span class="dot"></span>${m}</div>`).join('')}
       </div>
     </div>
     <div class="body">
@@ -148,4 +146,4 @@ function openModal(name, price){
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 </script>
 </body>
-  </html>
+</html>
